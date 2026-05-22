@@ -1,0 +1,21 @@
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        st = []
+        for i in reversed(range(len(tokens))):
+            st.append(tokens[i])
+        while len(st) > 1:
+            n1 = st.pop()
+            n2 = st.pop()
+            op = st.pop()
+            match op:
+                case "+":
+                    n1 = int(n1) + int(n2)
+                case "-":
+                    n1 = int(n1) - int(n2)
+                case "*":
+                    n1 = int(n1) * int(n2)
+                case "/":
+                    n1 = int(n1) * int(n2)
+            st.append(n1)
+        return st.pop()
+        
